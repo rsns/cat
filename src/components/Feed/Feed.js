@@ -9,7 +9,7 @@ const Feed = ( props ) => {
         <div className={classes.MultiColumn}>
 
             {imageFeed}
-            <ShowMore />
+            <ShowMore showMore={props.showMore}/>
          </div>
     );
 }

@@ -4,7 +4,7 @@ import classes from './ShowMore.module.css'
 const showMore = ( props ) => {
     return (
         <div className={classes.btn__wrap}>
-            <button className={classes.ShowMore}>Show More</button>
+            <button onClick={props.showMore} className={classes.ShowMore}>Show Moar</button>
         </div>
     );
 }

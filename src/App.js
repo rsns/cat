@@ -10,12 +10,13 @@ class App extends Component  {
     selectedCategory: null,
     lastCategory: [],
     images: [],
+    imagesCopy: [],
+    showMoreImages: [],
+    allImages: [],
     order:'Desc',
     page: 1,
     limit: 10,
-    pagination_count: 0,
-    a: [],
-    b: []
+    pagination_count: 0
   }
 
   chooseCategory(event) {
@@ -23,8 +24,6 @@ class App extends Component  {
     this.setState({lastCategory: event.target.value});
     this.getImages();
   }
-
-
 
   async getCategories()
   {
@@ -41,6 +40,7 @@ class App extends Component  {
       }
   }
 
+
   async getImages()
   {
       try{
@@ -53,17 +53,15 @@ class App extends Component  {
           }
           let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: query_params } ) 
           this.pagination_count = response.headers['pagination-count'];
-          
-          
           this.setState({images: response.data});
           this.setState({page: this.state.page + 1});
           console.log("-- ("+this.state.images.length +") Images from TheCatAPI.com")
           console.log( this.pagination_count ,'images available for this query.')
-          
       }catch(err){
           console.log(err)
       }
   }
+
 
   async showMoar()
   {
@@ -78,20 +76,14 @@ class App extends Component  {
           let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: query_params } ) 
           this.pagination_count = response.headers['pagination-count'];
 
-          this.setState({a: this.state.images});
-          this.setState({b: response.data});
-          this.setState({c: this.state.a.concat(this.state.b)});
-
-          console.log('a:', this.state.a);
-          console.log('b:',this.state.b);
-          console.log('c:',this.state.c);
-          this.setState({images: this.state.c});
+          this.setState({imagesCopy: this.state.images});
+          this.setState({showMoreImages: response.data});
+          this.setState({allImages: this.state.imagesCopy.concat(this.state.showMoreImages)});
+          console.log('imagesCopy:', this.state.imagesCopy);
+          console.log('showMoreImages:',this.state.showMoreImages);
+          console.log('allImages:',this.state.allImages);
+          this.setState({images: this.state.allImages});
           this.setState({page: this.state.page + 1});
-
-          console.log(this.state.images);
-
-
- 
           console.log("-- ("+this.state.images.length +") Images from TheCatAPI.com")
           console.log( this.pagination_count ,'images available for this query.')
           
@@ -100,10 +92,11 @@ class App extends Component  {
       }
   }
 
+
   showMore() {
     this.showMoar();
-    console.log(this.state.images)
   }
+
 
   componentDidUpdate(prevState) {
     if(this.state.selectedCategory) {
@@ -112,11 +105,13 @@ class App extends Component  {
     }
   }
 
+
   componentDidMount() {
     this.getCategories();
     this.getImages();
   }
 
+  
   render () {
     return (
       <div className="App">

@@ -23,13 +23,12 @@ class App extends Component  {
   async getCategories()
   {
       try{
-          axios.defaults.headers.common['x-api-key'] = "8e805f31-3dfd-4cce-998c-e4337e5150ea" // Replace this with your API Key, as it's set to defaults it will be used from now onwards
+          axios.defaults.headers.common['x-api-key'] = "8e805f31-3dfd-4cce-998c-e4337e5150ea" 
           
           let response = await axios.get('https://api.thecatapi.com/v1/categories/' ) 
           this.setState({categories: response.data});
           console.log("-- ("+this.state.categories.length +") Categories from TheCatAPI.com")
-          // pick one to display initially
-          //this.setState({selectedCategory: this.state.categories[0]});
+
           console.log(this.state.categories)
       }catch(err){
           console.log(err)
@@ -39,8 +38,7 @@ class App extends Component  {
   async getImages()
   {
       try{
-          axios.defaults.headers.common['x-api-key'] = "8e805f31-3dfd-4cce-998c-e4337e5150ea" // Replace this with your API Key
-          
+          axios.defaults.headers.common['x-api-key'] = "8e805f31-3dfd-4cce-998c-e4337e5150ea" 
           let query_params = {
               limit: this.state.limit,
               order: this.state.order,

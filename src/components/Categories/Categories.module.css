@@ -1,9 +1,16 @@
 .Categories {
+    display: flex;
+    flex-direction: column;
     width: 15%;
-    float: left;
 }
-@media (max-width:600px) {
+
+.Heading {
+    color: white;
+}
+
+@media (max-width:676px) {
     .Categories {
-        display: block;
+        width: 80%;
+        margin: auto;
     }
 }

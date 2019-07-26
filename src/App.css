@@ -1,5 +1,11 @@
+body {
+  background-color: salmon;
+}
+
 .App {
-  max-width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 85%;
   margin: auto;
   overflow: auto;
   box-sizing: border-box;

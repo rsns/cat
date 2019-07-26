@@ -1,12 +1,12 @@
 .SingleImage {
     margin: 5px;
     width: 100%;
-    max-width: 320px;
+    max-width: 520px;
+    border: 2px solid white;
 }
 
-@media (max-width:320px) {
+@media (max-width:676px) {
     .SingleImage {
-        margin: 120px;
-
+        margin: 10px 0;
     }
 }

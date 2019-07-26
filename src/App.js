@@ -14,7 +14,7 @@ class App extends Component  {
     showMoreImages: [],
     allImages: [],
     order:'Desc',
-    page: 1,
+    page: 0,
     limit: 10,
     pagination_count: 0
   }
@@ -22,6 +22,7 @@ class App extends Component  {
   chooseCategory(event) {
     this.setState({selectedCategory: event.target.value});
     this.setState({lastCategory: event.target.value});
+    this.setState({page: 0});
     this.getImages();
   }
 
@@ -48,13 +49,13 @@ class App extends Component  {
           let query_params = {
               limit: this.state.limit,
               order: this.state.order,
-              page: this.state.page-1,
+              page: this.state.page,
               category_ids: this.state.selectedCategory
           }
+
           let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: query_params } ) 
           this.pagination_count = response.headers['pagination-count'];
           this.setState({images: response.data});
-          this.setState({page: this.state.page + 1});
           console.log("-- ("+this.state.images.length +") Images from TheCatAPI.com")
           console.log( this.pagination_count ,'images available for this query.')
       }catch(err){
@@ -67,12 +68,15 @@ class App extends Component  {
   {
       try{
           axios.defaults.headers.common['x-api-key'] = "8e805f31-3dfd-4cce-998c-e4337e5150ea" 
+          this.setState({page: this.state.page ++});
           let query_params = {
               limit: this.state.limit,
               order: this.state.order,
-              page: this.state.page-1,
+              page: this.state.page,
               category_ids: this.state.lastCategory[0]
           }
+
+          console.log(this.state.page)
           let response = await axios.get('https://api.thecatapi.com/v1/images/search', { params: query_params } ) 
           this.pagination_count = response.headers['pagination-count'];
 

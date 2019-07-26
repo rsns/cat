@@ -1,0 +1,6 @@
+.App {
+  max-width: 95%;
+  margin: auto;
+  overflow: auto;
+  box-sizing: border-box;
+}

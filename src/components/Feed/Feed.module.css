@@ -1,0 +1,16 @@
+.MultiColumn {
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 85%;
+    margin: auto;
+    justify-content: center;
+
+
+}
+
+@media (max-width:600px) {
+    .MultiColumn {
+        max-width: 100%;
+    }
+}

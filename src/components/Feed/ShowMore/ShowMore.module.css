@@ -2,14 +2,14 @@
     display: block;
     height: 120px;
     width: 120px;
-    margin: auto;
+    margin: 20px auto;
     padding: 10px;
-    margin-top: 20px;
     border-radius: 50%;
     background-color:tomato;
     color: white;
     font-size: 18px;
     text-transform: uppercase;
+    font-weight: bold;
     cursor: pointer;
     border: 2px solid white;
 }

@@ -5,8 +5,18 @@ body {
 .App {
   display: flex;
   flex-wrap: wrap;
-  max-width: 85%;
+  width: 90%;
   margin: auto;
   overflow: auto;
   box-sizing: border-box;
+}
+
+@media (max-width: 787px) {
+  .Categories {
+      width: 80%;
+      margin: auto;
+  }
+  .App {
+    width: 95%;
+  }
 }

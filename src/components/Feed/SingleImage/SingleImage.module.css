@@ -1,8 +1,14 @@
 .SingleImage {
     margin: 5px;
     width: 100%;
-    max-width: 520px;
+    max-width: 350px;
     border: 2px solid white;
+}
+
+@media (max-width:991px) {
+    .SingleImage {
+        max-width: 500px;
+    }
 }
 
 @media (max-width:676px) {

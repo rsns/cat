@@ -5,6 +5,7 @@
 }
 
 .Heading {
+    font-size: 22px;
     color: white;
 }
 
@@ -12,5 +13,9 @@
     .Categories {
         width: 80%;
         margin: auto;
+    }
+    .Heading {
+        font-size: 32px;
+        margin-bottom: 10px;
     }
 }
